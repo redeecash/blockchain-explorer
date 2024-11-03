@@ -1,6 +1,6 @@
 # Blockchain Explorer
 
-I was looking for a basic and simple to implement blockchain explorer using the RPC API preferrably in PHP, but only found out-dated convulted examples. So I asked chatgpt.com the following,
+I was looking for a basic and simple to implement blockchain explorer using the RPC API preferrably in PHP, but only found out-dated convoluted examples. So I asked chatgpt.com the following,
 
 ```
 create a blockchain explorer like etherscan.io in PHP that interacts with the RPC blockchain API
