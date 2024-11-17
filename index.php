@@ -185,7 +185,7 @@ foreach ($blocks as $block) {
                 <tbody>
                     <?php foreach ($transactions as $transaction): ?>
                         <tr>
-                            <td><a href="transaction.php?tx=<?php echo $tx['hash']; ?>"><?php echo substr($tx['hash'], 0, 15) . '...'; ?></a></td>
+                            <td><a href="/tx/<?php echo $tx['hash']; ?>"><?php echo substr($tx['hash'], 0, 15) . '...'; ?></a></td>
                             <td><?php echo $transaction['from']; ?></td>
                             <td><?php echo $transaction['to']; ?></td>
                             <td><?php echo hexdec($transaction['value']) / 1e18; // Convert Wei to ETH ?></td>

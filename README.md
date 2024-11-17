@@ -10,6 +10,21 @@ then added additional customizations to deliver the simple PHP implementation si
 
 ![1730660514120](image/README/1730660514120.png)
 
+# EIP-3091: Block Explorer API Routes
+
+See [https://eips.ethereum.org/EIPS/eip-3091](https://eips.ethereum.org/EIPS/eip-3091)
+
+To make this blockchain explorer compliant with EIP-3091 involves  creating redirect rules in .htaccess,
+
+```
+RewriteEngine On
+RewriteRule ^block/(.*)$ /blocks.php?block=$1 [L,R=301]
+RewriteRule ^tx/(.*)$ /transaction.php?tx=$1 [L,R=301]
+RewriteRule ^address/(.*)$ /account.php?address=$1 [L,R=301]
+
+```
+TODO: add token route
+
 ## ChatGPT Initial Response
 
 Creating a blockchain explorer in PHP that interacts with an RPC blockchain API is a powerful project! Here’s an outline of the major components and a guide to get you started with basic functionality.
