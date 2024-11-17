@@ -23,6 +23,7 @@ RewriteRule ^tx/(.*)$ /transaction.php?tx=$1 [L,R=301]
 RewriteRule ^address/(.*)$ /account.php?address=$1 [L,R=301]
 
 ```
+
 TODO: add token route
 
 ## ChatGPT Initial Response
@@ -273,3 +274,7 @@ Once you have registered your TLD, you want to choose a hosting provider that wi
 ## Adding to chainid.network
 
 Visit [https://github.com/ethereum-lists/chains](https://github.com/ethereum-lists/chains)
+
+## Live Example of a Test Network
+
+Visit [https://test-explorer.exemptliquiditymarket.exchange/](https://test-explorer.exemptliquiditymarket.exchange/)
