@@ -40,6 +40,11 @@ to view a token directly (especially invoke from metamask), uses the URL of
 ```
 https://[EXPLORER_URL]/token/0x2894227C135C696Ce21700f120d2C3261beD86Ae
 ```
+Steps to obtain the list of ERC-20 tokens. There is no direct ETH RPC request but is accomplished through a series of request,
+
+1. Get the logs a specific token events, e.g. "topics" => ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]
+2. Loop through the result array reading the "transactionHash": "0x882da3c9b1e54507166959581d7ee73921887ed4dfe70d54e45ede5d65c6addd" and invoking eth_getTransactionReceipt
+3. read the contractAddress from the result array and invoke eth_call for retrieving the name, symbol, decimals and totalSupply, skip any response with an error.
 
 ## ChatGPT Initial Response
 
