@@ -21,10 +21,25 @@ RewriteEngine On
 RewriteRule ^block/(.*)$ /blocks.php?block=$1 [L,R=301]
 RewriteRule ^tx/(.*)$ /transaction.php?tx=$1 [L,R=301]
 RewriteRule ^address/(.*)$ /account.php?address=$1 [L,R=301]
+RewriteRule ^token/(.*)$ /token.php?address=$1 [L,R=301]
 
 ```
 
 TODO: add token route
+
+which is the token tracker used on etherscan.io
+
+![1731946578746](image/README/1731946578746.png)
+
+a single token view,
+
+![1731951024888](image/README/1731951024888.png)
+
+to view a token directly (especially invoke from metamask), uses the URL of
+
+```
+https://[EXPLORER_URL]/token/0x2894227C135C696Ce21700f120d2C3261beD86Ae
+```
 
 ## ChatGPT Initial Response
 
