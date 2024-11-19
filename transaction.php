@@ -46,7 +46,7 @@ if (isset($_GET['tx'])) {
                         </tr>
                         <tr>
                             <td><strong>To:</strong></td>
-                            <td><?php echo htmlspecialchars($transaction['to']); ?></td>
+                            <td><?php echo (isset($transaction['to']) ? htmlspecialchars($transaction['to']) : ""); ?></td>
                         </tr>
                         <tr>
                             <td><strong>Value:</strong></td>

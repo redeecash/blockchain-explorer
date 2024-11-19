@@ -8,13 +8,17 @@ create a blockchain explorer like etherscan.io in PHP that interacts with the RP
 
 then added additional customizations to deliver the simple PHP implementation similar to the[ etherscan.io.](https://etherscan.io)
 
-![1730660514120](image/README/1730660514120.png)
+![1732040146767](image/README/1732040146767.png)
+
+![1732040214738](image/README/1732040214738.png)
+
+![1732040229436](image/README/1732040229436.png)
 
 # EIP-3091: Block Explorer API Routes
 
 See [https://eips.ethereum.org/EIPS/eip-3091](https://eips.ethereum.org/EIPS/eip-3091)
 
-To make this blockchain explorer compliant with EIP-3091 involves  creating redirect rules in .htaccess,
+To make this blockchain explorer compliant with EIP-3091 involves  creating redirect rules in .htaccess, (in htaccess_production), rename to .htaccess
 
 ```
 RewriteEngine On
@@ -25,26 +29,30 @@ RewriteRule ^token/(.*)$ /token.php?address=$1 [L,R=301]
 
 ```
 
-TODO: add token route
-
-which is the token tracker used on etherscan.io
-
-![1731946578746](image/README/1731946578746.png)
-
-a single token view,
-
-![1731951024888](image/README/1731951024888.png)
-
 to view a token directly (especially invoke from metamask), uses the URL of
 
 ```
 https://[EXPLORER_URL]/token/0x2894227C135C696Ce21700f120d2C3261beD86Ae
 ```
+
 Steps to obtain the list of ERC-20 tokens. There is no direct ETH RPC request but is accomplished through a series of request,
 
 1. Get the logs a specific token events, e.g. "topics" => ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]
 2. Loop through the result array reading the "transactionHash": "0x882da3c9b1e54507166959581d7ee73921887ed4dfe70d54e45ede5d65c6addd" and invoking eth_getTransactionReceipt
 3. read the contractAddress from the result array and invoke eth_call for retrieving the name, symbol, decimals and totalSupply, skip any response with an error.
+
+The Keccak-256 hash is used in Ethereum for various purposes, such as function signatures in smart contracts. To compute the Keccak-256 hash for the functions `name()`, `symbol()`, `decimals()`, and `totalSupply()`, you need to hash their signatures.
+
+### Complete Table
+
+| Function                | Signature         | Keccak-256 Hash (Full)                                                 | Function Selector (4 bytes) |
+| ----------------------- | ----------------- | ---------------------------------------------------------------------- | --------------------------- |
+| **name()**        | `name()`        | `0x06fdde0385b5a88f3f7d7d54fbe6e69b946f352c2f708c2e3d9a11d8477f09f9` | `0x06fdde03`              |
+| **symbol()**      | `symbol()`      | `0x95d89b41584f4c13d61c871fa86a44e0e774b9bfb2e218943ca9d0f62f18ca2e` | `0x95d89b41`              |
+| **decimals()**    | `decimals()`    | `0x313ce567d505fb78c3a33a5a7f9e4d87eb74e4d1593a158e96a867c3a0733cbb` | `0x313ce567`              |
+| **totalSupply()** | `totalSupply()` | `0x18160dddcd618e2c3dcd9f2f919b164fce5fc4b1156e0f2af1a4298bf9e3fafe` | `0x18160ddd`              |
+
+Let me know if you'd like to compute any other function hashes!
 
 ## ChatGPT Initial Response
 

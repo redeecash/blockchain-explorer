@@ -68,7 +68,7 @@ if (isset($_GET['block'])) {
                     <?php foreach ($block['result']['transactions'] as $transaction): ?>
                         <li>
                             <strong>Transaction Hash:</strong> 
-                            <a href="/tx=<?php echo htmlspecialchars($transaction['hash']); ?>" class="w3-text-teal">
+                            <a href="transaction.php?tx=<?php echo htmlspecialchars($transaction['hash']); ?>" class="w3-text-teal">
                                 <?php echo htmlspecialchars($transaction['hash']); ?>
                             </a>
                         </li>

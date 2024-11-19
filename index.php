@@ -96,8 +96,13 @@ foreach ($blocks as $block) {
             <h2 class="w3-text-dark-gray">Search Blockchain</h2>
             <form method="GET" action="search.php" class="w3-row">
                 <input type="text" name="query" placeholder="Enter transaction hash, block number, or address" class="w3-input w3-border w3-round w3-margin-bottom" required>
-                <button type="submit" class="w3-button w3-teal w3-round">Search</button>
+                <button type="submit" class="w3-button w3-block w3-teal w3-round">Search</button>
             </form>
+        </div>
+
+        <!-- View Tokens -->
+        <div class="w3-container w3-card w3-white w3-round w3-padding-16 w3-margin-bottom">
+            <a href="token.php" class="w3-button w3-block w3-teal w3-round">View Token(s)</a>
         </div>
 
         <!-- Stats Section -->
@@ -159,7 +164,7 @@ foreach ($blocks as $block) {
                 <tbody>
                     <?php foreach ($blocks as $block): ?>
                         <tr>
-                            <td><?php echo $block['number']; ?></td>
+                            <td><a href="blocks.php?block=<?php echo $block['number']; ?>"><?php echo $block['number']; ?></a></td>
                             <td><?php echo count($block['transactions']); ?></td>
                             <td><?php echo $block['miner']; ?></td>
                             <td><?php echo date('Y-m-d H:i:s', hexdec($block['timestamp'])); ?></td>
@@ -185,7 +190,7 @@ foreach ($blocks as $block) {
                 <tbody>
                     <?php foreach ($transactions as $transaction): ?>
                         <tr>
-                            <td><a href="/tx/<?php echo $tx['hash']; ?>"><?php echo substr($tx['hash'], 0, 15) . '...'; ?></a></td>
+                            <td><a href="transaction.php?tx=<?php echo $transaction['hash']; ?>"><?php echo substr($transaction['hash'], 0, 15) . '...'; ?></a></td>
                             <td><?php echo $transaction['from']; ?></td>
                             <td><?php echo $transaction['to']; ?></td>
                             <td><?php echo hexdec($transaction['value']) / 1e18; // Convert Wei to ETH ?></td>
