@@ -118,17 +118,10 @@ if (isset($_GET['address'])) {
     $result = rpcRequest('eth_getLogs', [$txHash]);
     $logs = $result['result'];
     
-    $hash = array();
-    foreach($logs as $log) {
-        $transactionHash = $log['transactionHash'];
-        array_push($hash, $transactionHash);
-    }
     $contracts = array();
-    foreach($hash as $tx) {
-        $txHash = $tx;
-        $result = rpcRequest('eth_getTransactionReceipt',[$txHash]);
-        $contractAddress = $result['result']['contractAddress'];
-        array_push($contracts,$contractAddress);
+    foreach($logs as $log) {
+        $contractAddress = $log['address'];
+        array_push($contracts, $contractAddress);
     }
 }
 ?>
