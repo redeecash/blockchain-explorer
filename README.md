@@ -14,6 +14,10 @@ then added additional customizations to deliver the simple PHP implementation si
 
 ![1732040229436](image/README/1732040229436.png)
 
+When the redirects are properly configured, the token information can be view from metamask links,
+
+![1732041456597](image/README/1732041456597.png)
+
 # EIP-3091: Block Explorer API Routes
 
 See [https://eips.ethereum.org/EIPS/eip-3091](https://eips.ethereum.org/EIPS/eip-3091)
