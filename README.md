@@ -50,12 +50,12 @@ The Keccak-256 hash is used in Ethereum for various purposes, such as function s
 
 ### Complete Table
 
-| Function                | Signature         | Keccak-256 Hash (Full)                                                 | Function Selector (4 bytes) |
-| ----------------------- | ----------------- | ---------------------------------------------------------------------- | --------------------------- |
-| **name()**        | `name()`        | `0x06fdde0385b5a88f3f7d7d54fbe6e69b946f352c2f708c2e3d9a11d8477f09f9` | `0x06fdde03`              |
-| **symbol()**      | `symbol()`      | `0x95d89b41584f4c13d61c871fa86a44e0e774b9bfb2e218943ca9d0f62f18ca2e` | `0x95d89b41`              |
-| **decimals()**    | `decimals()`    | `0x313ce567d505fb78c3a33a5a7f9e4d87eb74e4d1593a158e96a867c3a0733cbb` | `0x313ce567`              |
-| **totalSupply()** | `totalSupply()` | `0x18160dddcd618e2c3dcd9f2f919b164fce5fc4b1156e0f2af1a4298bf9e3fafe` | `0x18160ddd`              |
+| Function                | Signature         |  Function Selector (4 bytes) |
+| ----------------------- | ----------------- |  --------------------------- |
+| **name()**        | `name()`        |  `0x06fdde03`              |
+| **symbol()**      | `symbol()`      |  `0x95d89b41`              |
+| **decimals()**    | `decimals()`    |  `0x313ce567`              |
+| **totalSupply()** | `totalSupply()` |  `0x18160ddd`              |
 
 Let me know if you'd like to compute any other function hashes!
 
