@@ -50,7 +50,7 @@ The Keccak-256 hash is used in Ethereum for various purposes, such as function s
 
 ### eth_getLogs
 
-exaample request,
+example request,
 
 ```
 {
