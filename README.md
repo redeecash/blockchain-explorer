@@ -43,19 +43,96 @@ https://[EXPLORER_URL]/token/0x2894227C135C696Ce21700f120d2C3261beD86Ae
 Steps to obtain the list of ERC-20 tokens. There is no direct ETH RPC request but is accomplished through a series of request,
 
 1. Get the logs a specific token events, e.g. "topics" => ["0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"]
-2. Loop through the result array reading the "transactionHash": "0x882da3c9b1e54507166959581d7ee73921887ed4dfe70d54e45ede5d65c6addd" and invoking eth_getTransactionReceipt
-3. read the contractAddress from the result array and invoke eth_call for retrieving the name, symbol, decimals and totalSupply, skip any response with an error.
+2. The contract address is in the address field of the response.
+3. Read the contract address from the result['address'] array and invoke eth_call for retrieving the name, symbol, decimals and totalSupply, skip any response with an error.
 
 The Keccak-256 hash is used in Ethereum for various purposes, such as function signatures in smart contracts. To compute the Keccak-256 hash for the functions `name()`, `symbol()`, `decimals()`, and `totalSupply()`, you need to hash their signatures.
 
+### eth_getLogs
+
+exaample request,
+
+```
+{
+    "jsonrpc":"2.0",
+    "method":"eth_getLogs",
+    "params":[
+        {
+            "fromBlock": "0x0",          // Start block
+            "toBlock": "latest",        // End block
+            "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+        ]
+        }
+    ],
+    "id":"{{rpcid}}"
+}
+```
+
+response,
+
+```
+{
+    "id": "19345f34f67",
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "address": "0xcbcbcbff300490b36ad7ee3e4c1c96d746fb9294",
+            "blockHash": "0x66b6784776ae93ec276d725aaea535c5df02d9016cb24b2d98381102d0b4e755",
+            "blockNumber": "0xd",
+            "data": "0x00000000000000000000000000000000000000000000152d02c7e14af6800000",
+            "logIndex": "0x0",
+            "removed": false,
+            "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000b6068565a9353f24a41c08321903bedc6b715ea8"
+            ],
+            "transactionHash": "0x882da3c9b1e54507166959581d7ee73921887ed4dfe70d54e45ede5d65c6addd",
+            "transactionIndex": "0x0"
+        },
+        {
+            "address": "0x2894227c135c696ce21700f120d2c3261bed86ae",
+            "blockHash": "0xa518b5939999efb35ee84c44d12dbc6ea6d6cdd3538372301c1a04c0eaeac5dc",
+            "blockNumber": "0xe",
+            "data": "0x00000000000000000000000000000000000000000000152d02c7e14af6800000",
+            "logIndex": "0x0",
+            "removed": false,
+            "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000b6068565a9353f24a41c08321903bedc6b715ea8"
+            ],
+            "transactionHash": "0xae4501d65571e002c815f23e4ffcab018296d97f5c263ba2f8be4df890902c1c",
+            "transactionIndex": "0x0"
+        },
+        {
+            "address": "0x3f2fecd4b38b34229fafc85249c8034daf00b51a",
+            "blockHash": "0x2209188710a399ff769b5dba66b20a6e4110103d80e2e4c11774bc50ddca2fba",
+            "blockNumber": "0x18",
+            "data": "0x0000000000000000000000000000000000000000000000000000000000030d40",
+            "logIndex": "0x0",
+            "removed": false,
+            "topics": [
+                "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+                "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "0x000000000000000000000000b6068565a9353f24a41c08321903bedc6b715ea8"
+            ],
+            "transactionHash": "0xc38b1dbb432ec928da8a9dbd32931a0cdb46a2408bf80d1367529852267082d3",
+            "transactionIndex": "0x0"
+        }
+    ]
+}
+```
+
 ### Complete Table
 
-| Function                | Signature         |  Function Selector (4 bytes) |
-| ----------------------- | ----------------- |  --------------------------- |
-| **name()**        | `name()`        |  `0x06fdde03`              |
-| **symbol()**      | `symbol()`      |  `0x95d89b41`              |
-| **decimals()**    | `decimals()`    |  `0x313ce567`              |
-| **totalSupply()** | `totalSupply()` |  `0x18160ddd`              |
+| Function                | Signature         | Function Selector (4 bytes) |
+| ----------------------- | ----------------- | --------------------------- |
+| **name()**        | `name()`        | `0x06fdde03`              |
+| **symbol()**      | `symbol()`      | `0x95d89b41`              |
+| **decimals()**    | `decimals()`    | `0x313ce567`              |
+| **totalSupply()** | `totalSupply()` | `0x18160ddd`              |
 
 Let me know if you'd like to compute any other function hashes!
 
