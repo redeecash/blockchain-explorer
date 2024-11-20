@@ -134,8 +134,6 @@ response,
 | **decimals()**    | `decimals()`    | `0x313ce567`              |
 | **totalSupply()** | `totalSupply()` | `0x18160ddd`              |
 
-Let me know if you'd like to compute any other function hashes!
-
 ## ChatGPT Initial Response
 
 Creating a blockchain explorer in PHP that interacts with an RPC blockchain API is a powerful project! Here’s an outline of the major components and a guide to get you started with basic functionality.
