@@ -19,7 +19,7 @@ When the redirects are properly configured, the token information can be view fr
 
 ![1732198429917](image/README/1732198429917.png)
 
-A much needed component for the blockchain explorer is direct interaction with the smart contracts. Previously, would be achieved by connecting REMIX to the localhost blockchain like GANACHE,  use remox is directory access mode or import local controcts to the REMIX IDE, select the contract, enter the contract address on the local blockchain in the REMIX deploy IDE and connect REMIX to the already deployed contract.
+A much needed component for the blockchain explorer is direct interaction with the smart contracts. Previously, would be achieved by connecting REMIX to the localhost blockchain like GANACHE,  use REMIX is directory access mode or import local controcts to the REMIX IDE, select the contract, enter the contract address on the local blockchain in the REMIX deploy IDE and connect REMIX to the already deployed contract.
 
 Now just select the token, load the ABI json file (works with both REMIX and TRUFFLE generate ABI json) and generate the form.
 
