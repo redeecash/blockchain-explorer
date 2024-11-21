@@ -28,4 +28,44 @@ function rpcRequest($method, $params = []) {
 
     return json_decode($response, true);
 }
+
+function decodeTokenName($data) {
+    // Remove the "0x" prefix if present
+    if (str_starts_with($data, "0x")) {
+        $data = substr($data, 2);
+    }
+
+    // Convert hex string to binary
+    $stringData = hex2bin($data);
+
+    // Return the string
+    return $stringData;
+}
+
+function decodeTokenSymbol($data) {
+    // Remove the "0x" prefix if present
+    if (str_starts_with($data, "0x")) {
+        $data = substr($data, 2);
+    }
+
+    // Convert hex string to binary
+    $stringData = hex2bin($data);
+
+    // Return the string
+    return $stringData;
+}
+
+
+function decodeTotalSupply($data) {
+    // Remove the "0x" prefix if present
+    if (str_starts_with($data, "0x")) {
+        $data = substr($data, 2);
+    }
+
+    // Convert hex to decimal
+    $totalSupply = hexdec($data);
+
+    return $totalSupply;
+}
+
 ?>

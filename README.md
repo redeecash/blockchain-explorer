@@ -11,13 +11,25 @@ then added additional customizations to deliver the simple PHP implementation si
 
 ![1732040146767](image/README/1732040146767.png)
 
-![1732040214738](image/README/1732040214738.png)
+![1732198193430](image/README/1732198193430.png)
 
-![1732040229436](image/README/1732040229436.png)
+![1732198293632](image/README/1732198293632.png)
 
 When the redirects are properly configured, the token information can be view from metamask links,
 
-![1732041456597](image/README/1732041456597.png)
+![1732198429917](image/README/1732198429917.png)
+
+A much needed component for the blockchain explorer is direct interaction with the smart contracts. Previously, would be achieved by connecting REMIX to the localhost blockchain like GANACHE,  use remox is directory access mode or import local controcts to the REMIX IDE, select the contract, enter the contract address on the local blockchain in the REMIX deploy IDE and connect REMIX to the already deployed contract.
+
+Now juest select the token, load the ABI json file (works with both REMIX and TRUFFLE generate ABI json) and generate the form.
+
+![1732199627755](image/README/1732199627755.png)
+
+![1732199723524](image/README/1732199723524.png)
+
+![1732198840286](image/README/1732198840286.png)
+
+Next steps is to integrate the blockchain explorer and contract user interface in the [Ethereum Contract Creator](https://snapcraft.io/ethereum-contract-creator) application.
 
 # EIP-3091: Block Explorer API Routes
 

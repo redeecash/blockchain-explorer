@@ -3,44 +3,6 @@ require_once 'rpc_client.php';
 
 global $name, $symbol, $decimals, $totalSupply, $error;
 
-function decodeTokenName($data) {
-    // Remove the "0x" prefix if present
-    if (str_starts_with($data, "0x")) {
-        $data = substr($data, 2);
-    }
-
-    // Convert hex string to binary
-    $stringData = hex2bin($data);
-
-    // Return the string
-    return $stringData;
-}
-
-function decodeTokenSymbol($data) {
-    // Remove the "0x" prefix if present
-    if (str_starts_with($data, "0x")) {
-        $data = substr($data, 2);
-    }
-
-    // Convert hex string to binary
-    $stringData = hex2bin($data);
-
-    // Return the string
-    return $stringData;
-}
-
-
-function decodeTotalSupply($data) {
-    // Remove the "0x" prefix if present
-    if (str_starts_with($data, "0x")) {
-        $data = substr($data, 2);
-    }
-
-    // Convert hex to decimal
-    $totalSupply = hexdec($data);
-
-    return $totalSupply;
-}
 
 $error = "";
 
@@ -160,6 +122,10 @@ if (isset($_GET['address'])) {
                             <td><strong>Token Total Supply:</strong></td>
                             <td><?php echo htmlspecialchars($totalSupply); ?></td>
                         </tr>
+                        <tr>
+                            <td><strong>Token Interaction:</strong></td>
+                            <td><a href="client.php?address=<?php echo $_GET["address"]; ?>" class="w3-button w3-block w3-teal">Smart Contract User Interface (UI)</a></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -170,13 +136,49 @@ if (isset($_GET['address'])) {
                 <table class="w3-table w3-bordered w3-striped w3-white">
                     <tr>
                         <th>#</th>
-                        <th>Token</th>
+                        <th>Token Address</th>
+                        <th>Token Name</th>
+                        <th>Token Symbol</th>
+                        <th></th>
                     </tr>
                     <?php $index = 1; ?>
                     <?php for($i=0; $i<count($contracts); $i++) : ?>
                         <tr>
                             <td><?php echo $i+1; ?></td>
                             <td><a href="token.php?address=<?php echo $contracts[$i]; ?>"><?php echo $contracts[$i]; ?></a></td>
+                            <td>
+                                <?php
+                                    // get token name
+                                    $txHash = [
+                                        "to" => $contracts[$i],
+                                        "data" => "0x06fdde03"
+                                    ];
+                                    $result = rpcRequest('eth_call', [$txHash]);
+                                    if (!isset($result['error'])) {
+                                        $name = decodeTokenName($result['result']);
+                                    } else {
+                                        $name = $result['error']['message'];
+                                    }
+                                    echo $name;
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    // get token symbol
+                                    $txHash = [
+                                        "to" => $contracts[$i],
+                                        "data" => "0x95d89b41"
+                                    ];
+                                    $result = rpcRequest('eth_call', [$txHash]);
+                                    if (!isset($result['error'])) {
+                                        $name = decodeTokenName($result['result']);
+                                    } else {
+                                        $name = $result['error']['message'];
+                                    }
+                                    echo $name;
+                                ?>
+                            </td>
+                            <td><a href="client.php?address=<?php echo $contracts[$i]; ?>" class="w3-button w3-block w3-teal">Smart Contract User Interface (UI)</a></td>
                         </tr>
                     <?php endfor; ?>
                 </table>
