@@ -55,7 +55,7 @@ if (isset($_GET['address'])) {
     if (!isset($result['error'])) {
         $decimals = hexdec(substr($result['result'], -2));
     } else {
-        $decimals = "0x0";
+        $decimals = "0";
     }
     // get token total supply
     $txHash = [
@@ -66,9 +66,10 @@ if (isset($_GET['address'])) {
     if (!isset($result['error'])) {
         $totalSupply = decodeTotalSupply($result['result']) / pow(10, $decimals);;
     } else {
-        $totalSupply = "0x0";
+        $totalSupply = "0";
     }
 
+    $formattedTotalSupply = number_format($totalSupply * (10 ** $decimals), 0, '.', '');
 } else {
     $txHash = [
         "fromBlock" => "0x0",          
@@ -120,7 +121,7 @@ if (isset($_GET['address'])) {
                         </tr>
                         <tr>
                             <td><strong>Token Total Supply:</strong></td>
-                            <td><?php echo htmlspecialchars($totalSupply); ?></td>
+                            <td><?php echo $formattedTotalSupply; ?></td>
                         </tr>
                         <tr>
                             <td><strong>Token Interaction:</strong></td>
@@ -139,7 +140,8 @@ if (isset($_GET['address'])) {
                         <th>Token Address</th>
                         <th>Token Name</th>
                         <th>Token Symbol</th>
-                        <th></th>
+                        <th>Token Decimals</th>
+                        <th>Token Total Supply</th>
                     </tr>
                     <?php $index = 1; ?>
                     <?php for($i=0; $i<count($contracts); $i++) : ?>
@@ -178,7 +180,38 @@ if (isset($_GET['address'])) {
                                     echo $name;
                                 ?>
                             </td>
-                            <td><a href="client.php?address=<?php echo $contracts[$i]; ?>" class="w3-button w3-block w3-teal">Smart Contract User Interface (UI)</a></td>
+                            <td>
+                            <?php
+                                // get decimals
+                                $txHash = [
+                                    "to" => $contracts[$i],
+                                    "data" => "0x313ce567"
+                                ];
+                                $result = rpcRequest('eth_call', [$txHash]);
+                                if (!isset($result['error'])) {
+                                    $decimals = hexdec(substr($result['result'], -2));
+                                } else {
+                                    $decimals = $result['error']['message'];
+                                }
+                                echo $decimals;
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                // get total supply
+                                $txHash = [
+                                    "to" => $contracts[$i],
+                                    "data" => "0x18160ddd"
+                                ];
+                                $result = rpcRequest('eth_call', [$txHash]);
+                                if (!isset($result['error'])) {
+                                    $totalSupply = number_format(decodeTotalSupply($result['result']) * (10 ** $decimals), 0, '.', '');
+                                } else {
+                                    $totalSupply = $result['error']['message'];
+                                }
+                                echo $totalSupply;
+                                ?>
+                            </td>
                         </tr>
                     <?php endfor; ?>
                 </table>

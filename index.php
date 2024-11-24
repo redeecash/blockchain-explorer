@@ -42,13 +42,13 @@ if ($latestBlockNumber !== null) {
     }
     // Calculate TPS if start and end times are valid
     if ($startTime && $endTime && ($endTime - $startTime) > 0) {
-        $tps = $totalTransactions / ($endTime - $startTime);
+        $tps = number_format($totalTransactions / ($endTime - $startTime),18,'.','');
     }
 }
 
 // Get Median Gas Price from the latest block
 $latestBlock = rpcRequest('eth_getBlockByNumber', ['0x' . dechex($latestBlockNumber), true]);
-$medianGasPrice = isset($latestBlock['result']['baseFeePerGas']) ? hexdec($latestBlock['result']['baseFeePerGas']) / 1e9 : 'Unavailable';
+$medianGasPrice = isset($latestBlock['result']['baseFeePerGas']) ? number_format(hexdec($latestBlock['result']['baseFeePerGas']) * (10 ** 18), 0, '.', '') : 'Unavailable';
 
 // Last Finalized Block (assuming `eth_syncing` provides it)
 $syncingStatus = rpcRequest('eth_syncing', []);

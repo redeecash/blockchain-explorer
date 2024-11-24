@@ -9,9 +9,13 @@ interacts with the RPC blockchain API
 
 then added additional customizations to deliver the simple PHP implementation similar to the[ etherscan.io.](https://etherscan.io)
 
-![1732040146767](image/README/1732040146767.png)
+![1732443183595](image/README/1732443183595.png)
 
-![1732198193430](image/README/1732198193430.png)
+TPS values is calculated when there are at least 100 blocks.
+
+![1732442637159](image/README/1732442637159.png)
+
+If you see the message "**VM Exception while processing transaction,**" the smart contract was compiled with a different version of solidity.
 
 ![1732198293632](image/README/1732198293632.png)
 
