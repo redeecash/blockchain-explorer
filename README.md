@@ -13,6 +13,12 @@ then added additional customizations to deliver the simple PHP implementation si
 
 TPS values is calculated when there are at least 100 blocks.
 
+![1732671850875](image/README/1732671850875.png)
+
+![1732671986116](image/README/1732671986116.png)
+
+![1732671995317](image/README/1732671995317.png)
+
 ![1732442637159](image/README/1732442637159.png)
 
 If you see the message "**VM Exception while processing transaction,**" the smart contract was compiled with a different version of solidity.
