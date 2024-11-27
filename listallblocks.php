@@ -90,7 +90,6 @@ for ($i = $offset; $i < $offset + $blocksPerPage && $i < $totalBlocks; $i++) {
     </div>
     <br/>
     <!-- Pagination Links -->
-    <!-- Pagination Links -->
     <div class="w3-bar w3-light-grey w3-center">
         <?php if ($current_page > 1): ?>
             <a href="?page=<?php echo $current_page - 1; ?>" class="w3-button w3-left">Previous</a>
