@@ -202,6 +202,7 @@ foreach ($blocks as $block) {
                 </tbody>
             </table>
         </div>
+        <a href="https://github.com/redeecash/blockchain-explorer" target="_blank" class="w3-button w3-block w3-blue">Download this Blockchain Explorer</a>
     </div>
 </body>
 </html>
