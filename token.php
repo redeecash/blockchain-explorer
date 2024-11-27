@@ -86,6 +86,28 @@ if (isset($_GET['address'])) {
         $contractAddress = $log['address'];
         array_push($contracts, $contractAddress);
     }
+
+    // Define how many blocks to fetch, for example, the last 10 blocks
+    $contractsToFetch = 10;
+
+    // Configuration
+    $contractsPerPage = 10; // Number of blocks to display per page
+    $totalContracts = count($contracts); // Replace with actual number of blocks fetched from your RPC API
+    $totalPages = ceil($totalContracts / $contractsPerPage);
+
+    // Get the current page from the query string, default to 1
+    $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    if ($current_page < 1) {
+        $current_page = 1;
+    }
+    if ($current_page > $totalPages) {
+        $current_page = $totalPages;
+    }
+
+    // Calculate the offset for the database query
+    $offset = ($current_page - 1) * $contractsPerPage;
+    //$latestBlockNumber -= $offset;
+    
 }
 ?>
 <!DOCTYPE html>
@@ -144,7 +166,7 @@ if (isset($_GET['address'])) {
                         <th>Token Total Supply</th>
                     </tr>
                     <?php $index = 1; ?>
-                    <?php for($i=0; $i<count($contracts); $i++) : ?>
+                    <?php for($i=$offset; $i < $offset + $contractsPerPage && $i < count($contracts); $i++) : ?>
                         <tr>
                             <td><?php echo $i+1; ?></td>
                             <td><a href="token.php?address=<?php echo $contracts[$i]; ?>"><?php echo $contracts[$i]; ?></a></td>
@@ -215,6 +237,22 @@ if (isset($_GET['address'])) {
                         </tr>
                     <?php endfor; ?>
                 </table>
+            </div>
+            <!-- Pagination Links -->
+            <div class="w3-bar w3-light-grey w3-center">
+                <?php if ($current_page > 1): ?>
+                    <a href="?page=<?php echo $current_page - 1; ?>" class="w3-button w3-left">Previous</a>
+                <?php endif; ?>
+                
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?php echo $i; ?>" class="w3-button <?php if ($i == $current_page) echo 'w3-blue'; ?>">
+                        <?php echo $i; ?>
+                    </a>
+                <?php endfor; ?>
+
+                <?php if ($current_page < $totalPages): ?>
+                    <a href="?page=<?php echo $current_page + 1; ?>" class="w3-button w3-right">Next</a>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 

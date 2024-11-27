@@ -19,7 +19,7 @@ TPS values is calculated when there are at least 100 blocks.
 
 ![1732671995317](image/README/1732671995317.png)
 
-![1732442637159](image/README/1732442637159.png)
+![1732672932879](image/README/1732672932879.png)
 
 If you see the message "**VM Exception while processing transaction,**" the smart contract was compiled with a different version of solidity.
 
