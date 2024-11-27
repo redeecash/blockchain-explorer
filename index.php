@@ -152,6 +152,8 @@ foreach ($blocks as $block) {
         <!-- Last 10 Blocks Section -->
         <div class="w3-container w3-card w3-white w3-round w3-padding-16 w3-margin-bottom">
             <h2 class="w3-text-dark-gray">Last 10 Blocks</h2>
+            <a href="listallblocks.php" class="w3-button w3-teal w3-round w3-block">List All Blocks</a>
+            <br/>
             <table class="w3-table w3-bordered w3-striped w3-white">
                 <thead>
                     <tr class="w3-teal">
