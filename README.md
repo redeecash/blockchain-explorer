@@ -48,7 +48,8 @@ Next steps is to integrate the blockchain explorer and contract user interface i
 3. Extract the files from the archive
 4. Open you browser to your server URL
 5. Complete the installation process below and press the Install button
-6. Navigate back to explorer
+6. Rename httaccess_production to .htaccess ensure redirection is enabled on your web server
+7. Navigate back to explorer
 
 ![1732702012419](image/README/1732702012419.png)
 
