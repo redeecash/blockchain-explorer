@@ -52,12 +52,12 @@ for ($i = $offset; $i < $offset + $blocksPerPage && $i < $totalBlocks; $i++) {
 <body>
 
 <div class="w3-container w3-padding-32">
-    <h2 class="w3-center">Blockchain Explorer - All Blocks</h2>
+    <h2 class="w3-center w3-text-teal">Blockchain Explorer - All Blocks</h2>
 
     <div class="w3-responsive w3-card-4 w3-margin-top">
-        <table class="w3-table w3-bordered w3-striped w3-hoverable">
+        <table class="w3-table w3-bordered w3-striped w3-white">
             <thead>
-                <tr class="w3-blue">
+                <tr>
                     <th>Block Number</th>
                     <th>Hash</th>
                     <th>Parent Hash</th>

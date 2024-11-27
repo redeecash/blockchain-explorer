@@ -13,7 +13,7 @@ then added additional customizations to deliver the simple PHP implementation si
 
 TPS values is calculated when there are at least 100 blocks.
 
-![1732671850875](image/README/1732671850875.png)
+![1732700742636](image/README/1732700742636.png)
 
 ![1732671986116](image/README/1732671986116.png)
 
@@ -40,6 +40,21 @@ Now just select the token, load the ABI json file (works with both REMIX and TRU
 ![1732198840286](image/README/1732198840286.png)
 
 Next steps is to integrate the blockchain explorer and contract user interface in the [Ethereum Contract Creator](https://snapcraft.io/ethereum-contract-creator) application.
+
+# Installation
+
+1. Download the blockchain-explorer-[TIMESTAMP].zip (or tar) from the releases
+2. Upload to your hosting server directory
+3. Extract the files from the archive
+4. Open you browser to your server URL
+5. Complete the installation process below and press the Install button
+6. Navigate back to explorer
+
+![1732702012419](image/README/1732702012419.png)
+
+upon successful installation,
+
+![1732703069195](image/README/1732703069195.png)
 
 # EIP-3091: Block Explorer API Routes
 

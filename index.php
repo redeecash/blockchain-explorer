@@ -1,4 +1,10 @@
 <?php
+// Redirect to install.php if config.php does not exist
+if (!file_exists(__DIR__ . '/config.php')) {
+    header('Location: install.php');
+    exit;
+}
+
 require_once 'rpc_client.php';
 
 function getBlockByNumber($blockNumber) {
